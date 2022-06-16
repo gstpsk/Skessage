@@ -1,6 +1,7 @@
 package models
 
 type ChatRoom struct {
-	Id   string
-	Name string
+	Id       string
+	Name     string
+	Messages []Message
 }
