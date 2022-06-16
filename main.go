@@ -4,14 +4,11 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/gstpsk/skessage/models"
 )
 
-var chatRooms []chatRoom
-
-type chatRoom struct {
-	Id   string
-	Name string
-}
+var chatRooms []models.ChatRoom
 
 func main() {
 	handleRequests()
@@ -29,12 +26,12 @@ func indexPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func createNewRoom(w http.ResponseWriter, r *http.Request) {
-	room := chatRoom{
+	room := models.ChatRoom{
 		Id:   "testjen",
 		Name: "coole kamer",
 	}
 
 	chatRooms = append(chatRooms, room)
 
-	http.Redirect(w, r, "/room/"+room.Id, 302)
+	http.Redirect(w, r, "/room/"+room.Id, http.StatusFound)
 }
