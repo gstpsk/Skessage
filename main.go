@@ -21,8 +21,8 @@ func handleRequests() {
 }
 
 func indexPage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Welcome to the HomePage!")
 	fmt.Println("Endpoint Hit: homePage")
+	http.ServeFile(w, r, "templates/index.html")
 }
 
 func createNewRoom(w http.ResponseWriter, r *http.Request) {
