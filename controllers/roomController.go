@@ -53,6 +53,9 @@ func SendMessage(w http.ResponseWriter, r *http.Request) {
 	util.StatusCodeResponse(w, 200)
 }
 
-func GetMessagesForRoom(w http.ResponseWriter, r *http.Request) {
-	//r.Parse
+func GetMessagesForRoom(id string) []models.Message {
+	//roomId := r.PostFormValue("room-id")
+	room := GetRoomById(id)
+
+	return room.Messages
 }
